@@ -1,0 +1,22 @@
+{
+  "name": "BirdSpot",
+  "short_name": "BirdSpot",
+  "description": "Share bird sightings with photos, maps, and threaded discussion.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF5",
+  "theme_color": "#4A7C59",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

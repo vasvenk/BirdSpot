@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum LocationType {
+  PINPOINT
+  AREA
+}
+
+model User {
+  id          String          @id @default(uuid()) @db.Uuid
+  supabaseId  String          @unique
+  displayName String
+  avatarUrl   String?
+  createdAt   DateTime        @default(now())
+  sightings   Sighting[]
+  photos      SightingPhoto[]
+  likes       Like[]
+  comments    Comment[]
+
+  @@index([createdAt])
+}
+
+model Sighting {
+  id           String          @id @default(uuid()) @db.Uuid
+  authorId     String          @db.Uuid
+  birdName     String
+  description  String?
+  date         DateTime
+  latitude     Float
+  longitude    Float
+  locationType LocationType
+  radiusMeters Float?
+  likesCount   Int             @default(0)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  author       User            @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  photos       SightingPhoto[]
+  likes        Like[]
+  comments     Comment[]
+
+  @@index([authorId])
+  @@index([date])
+  @@index([createdAt(sort: Desc)])
+}
+
+model SightingPhoto {
+  id            String    @id @default(uuid()) @db.Uuid
+  sightingId    String    @db.Uuid
+  uploaderId    String    @db.Uuid
+  imageData     String
+  thumbnailData String?
+  caption       String?
+  createdAt     DateTime  @default(now())
+  sighting      Sighting  @relation(fields: [sightingId], references: [id], onDelete: Cascade)
+  uploader      User      @relation(fields: [uploaderId], references: [id], onDelete: Cascade)
+
+  @@index([sightingId])
+}
+
+model Like {
+  id         String    @id @default(uuid()) @db.Uuid
+  userId     String    @db.Uuid
+  sightingId String    @db.Uuid
+  createdAt  DateTime  @default(now())
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sighting   Sighting  @relation(fields: [sightingId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, sightingId])
+  @@index([userId, sightingId])
+}
+
+model Comment {
+  id         String     @id @default(uuid()) @db.Uuid
+  sightingId String     @db.Uuid
+  authorId   String     @db.Uuid
+  parentId   String?    @db.Uuid
+  body       String
+  createdAt  DateTime   @default(now())
+  sighting   Sighting   @relation(fields: [sightingId], references: [id], onDelete: Cascade)
+  author     User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  parent     Comment?   @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies    Comment[]  @relation("CommentReplies")
+
+  @@index([sightingId])
+  @@index([parentId])
+}

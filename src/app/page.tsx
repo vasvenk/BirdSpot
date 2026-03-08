@@ -35,9 +35,9 @@ export default function FeedPage() {
 
   return (
     <div className="space-y-6 pb-36">
-      <section className="relative overflow-hidden rounded-[36px] border border-white/70 bg-[radial-gradient(circle_at_top_left,rgba(172,204,165,0.45),transparent_38%),linear-gradient(135deg,#f7fbf3_0%,#fffdf7_52%,#f1f6ea_100%)] p-6 shadow-[0_16px_50px_rgba(60,92,68,0.1)]">
-        <div className="absolute -right-8 -top-10 h-32 w-32 rounded-full bg-[color:var(--color-moss)]/18 blur-2xl" />
-        <div className="absolute right-5 top-5 rounded-full bg-white/70 px-3 py-1 text-xs font-semibold text-[color:var(--color-forest)]">
+      <section className="relative overflow-hidden rounded-[36px] border border-[color:var(--color-soft-line)]/80 bg-[radial-gradient(circle_at_top_left,rgba(120,150,113,0.34),transparent_36%),linear-gradient(135deg,#f2f5ea_0%,#fcfaf3_52%,#edf1e6_100%)] p-6 shadow-[0_16px_50px_rgba(44,72,46,0.1)]">
+        <div className="absolute -right-8 -top-10 h-32 w-32 rounded-full bg-[color:var(--color-moss)]/20 blur-2xl" />
+        <div className="absolute right-5 top-5 rounded-full border border-[color:var(--color-soft-line)] bg-white/92 px-3 py-1 text-xs font-semibold text-[color:var(--color-forest)]">
           Mobile-first PWA
         </div>
 
@@ -52,7 +52,7 @@ export default function FeedPage() {
               <br />
               share wild encounters.
             </h1>
-            <p className="text-sm leading-6 text-[color:var(--color-ink)]/78">
+            <p className="text-sm leading-6 text-[color:var(--color-muted)]">
               BirdSpot keeps your local birding feed, shared map, photos, and discussions in one
               thumb-friendly place.
             </p>
@@ -62,26 +62,28 @@ export default function FeedPage() {
             {!isAuthenticated ? (
               <Link
                 href="/signup"
-                className="inline-flex min-h-11 items-center rounded-full bg-[color:var(--color-forest)] px-5 py-3 text-sm font-semibold text-white"
+                className="inline-flex min-h-11 items-center rounded-full bg-[color:var(--color-forest)] px-5 py-3 text-sm font-semibold text-[color:var(--color-paper)] shadow-[0_10px_24px_rgba(31,71,43,0.18)]"
               >
                 Join the flock
               </Link>
             ) : null}
             <Link
               href="/map"
-              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[color:var(--color-moss)]/30 bg-white/80 px-5 py-3 text-sm font-semibold text-[color:var(--color-forest)]"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[color:var(--color-soft-line)] bg-white/94 px-5 py-3 text-sm font-semibold text-[color:var(--color-forest)]"
             >
               <Compass className="h-4 w-4" />
               Explore the map
             </Link>
           </div>
 
-          <div className="flex gap-3 text-xs text-[color:var(--color-forest)]/72">
-            <span className="inline-flex items-center gap-1 rounded-full bg-white/70 px-3 py-2">
+          <div className="flex gap-3 text-xs text-[color:var(--color-muted)]">
+            <span className="inline-flex items-center gap-1 rounded-full border border-[color:var(--color-soft-line)] bg-white/94 px-3 py-2">
               <Sparkles className="h-3.5 w-3.5" />
               Public read access
             </span>
-            <span className="rounded-full bg-white/70 px-3 py-2">Offline shell caching</span>
+            <span className="rounded-full border border-[color:var(--color-soft-line)] bg-white/94 px-3 py-2">
+              Offline shell caching
+            </span>
           </div>
         </div>
       </section>
@@ -90,7 +92,7 @@ export default function FeedPage() {
         <div className="flex items-end justify-between">
           <div>
             <h2 className="text-lg font-semibold text-[color:var(--color-forest)]">Recent sightings</h2>
-            <p className="text-sm text-[color:var(--color-forest)]/68">
+            <p className="text-sm text-[color:var(--color-muted)]">
               Scroll for the latest reports from the community.
             </p>
           </div>
@@ -112,12 +114,12 @@ export default function FeedPage() {
             ))}
           </div>
         ) : (
-          <div className="rounded-[30px] border border-dashed border-[color:var(--color-moss)]/35 bg-white/65 p-8 text-center text-sm text-[color:var(--color-forest)]/72">
+          <div className="rounded-[30px] border border-dashed border-[color:var(--color-soft-line)] bg-white/75 p-8 text-center text-sm text-[color:var(--color-muted)]">
             No sightings yet. The next birder to post will set the tone.
           </div>
         )}
 
-        <div ref={sentinelRef} className="flex h-12 items-center justify-center text-sm text-[color:var(--color-forest)]/60">
+        <div ref={sentinelRef} className="flex h-12 items-center justify-center text-sm text-[color:var(--color-muted)]">
           {isLoadingMore ? "Loading more sightings…" : hasMore ? "Keep scrolling" : "You’re all caught up"}
         </div>
       </section>

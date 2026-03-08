@@ -17,7 +17,7 @@ export function BottomTabBar() {
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-xl px-4 pb-4 pt-2">
-      <div className="grid grid-cols-3 gap-2 rounded-[28px] border border-white/70 bg-[color:var(--color-card)]/95 p-2 shadow-[0_18px_50px_rgba(59,92,68,0.18)] backdrop-blur">
+      <div className="grid grid-cols-3 gap-2 rounded-[28px] border border-[color:var(--color-soft-line)] bg-[color:var(--color-card)]/98 p-2 shadow-[0_18px_50px_rgba(44,72,46,0.14)] backdrop-blur">
         {tabs.map((tab) => {
           const active =
             tab.href === "/" ? pathname === tab.href : pathname === tab.href || pathname.startsWith(`${tab.href}/`);
@@ -30,8 +30,8 @@ export function BottomTabBar() {
               className={cn(
                 "flex min-h-11 flex-col items-center justify-center rounded-2xl px-3 py-2 text-xs font-semibold transition",
                 active
-                  ? "bg-[color:var(--color-forest)] text-white"
-                  : "text-[color:var(--color-forest)]/75 hover:bg-[color:var(--color-moss)]/12",
+                  ? "bg-[color:var(--color-forest)] text-[color:var(--color-paper)] shadow-[0_8px_20px_rgba(31,71,43,0.18)]"
+                  : "text-[color:var(--color-ink)] hover:bg-[color:var(--color-moss)]/12",
               )}
             >
               <Icon className="mb-1 h-5 w-5" />

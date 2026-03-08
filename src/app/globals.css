@@ -6,11 +6,13 @@
   --color-paper: #fbf8f0;
   --color-card: #fffdf8;
   --color-forest: #1f472b;
+  --color-forest-strong: #16351f;
   --color-moss: #5f7f63;
   --color-sand: #dfc89a;
   --color-ink: #243228;
   --color-muted: #566459;
   --color-soft-line: #cdd7c9;
+  --color-on-forest: #fffdf8;
   --font-body: "Avenir Next", "Segoe UI", "Trebuchet MS", sans-serif;
   --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
@@ -20,11 +22,13 @@
   --color-paper: var(--color-paper);
   --color-card: var(--color-card);
   --color-forest: var(--color-forest);
+  --color-forest-strong: var(--color-forest-strong);
   --color-moss: var(--color-moss);
   --color-sand: var(--color-sand);
   --color-ink: var(--color-ink);
   --color-muted: var(--color-muted);
   --color-soft-line: var(--color-soft-line);
+  --color-on-forest: var(--color-on-forest);
   --font-sans: var(--font-body);
 }
 

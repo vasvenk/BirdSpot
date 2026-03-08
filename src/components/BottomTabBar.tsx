@@ -30,7 +30,7 @@ export function BottomTabBar() {
               className={cn(
                 "flex min-h-11 flex-col items-center justify-center rounded-2xl px-3 py-2 text-xs font-semibold transition",
                 active
-                  ? "bg-[color:var(--color-forest)] text-[color:var(--color-paper)] shadow-[0_8px_20px_rgba(31,71,43,0.18)]"
+                  ? "border border-black/5 bg-[color:var(--color-forest-strong)] text-[color:var(--color-on-forest)] shadow-[0_10px_24px_rgba(22,53,31,0.24)] [&_svg]:text-[color:var(--color-on-forest)]"
                   : "text-[color:var(--color-ink)] hover:bg-[color:var(--color-moss)]/12",
               )}
             >

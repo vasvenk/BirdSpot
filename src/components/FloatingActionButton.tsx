@@ -16,9 +16,9 @@ export function FloatingActionButton() {
     <Link
       href="/new"
       aria-label="Create a new sighting"
-      className="fixed bottom-28 right-5 z-40 flex h-15 w-15 items-center justify-center rounded-full bg-[color:var(--color-forest)] text-white shadow-[0_20px_40px_rgba(46,78,56,0.25)] transition hover:scale-[1.03]"
+      className="fixed bottom-28 right-5 z-40 flex h-[62px] w-[62px] items-center justify-center rounded-full border-4 border-[color:var(--color-card)] bg-[color:var(--color-forest-strong)] text-[color:var(--color-on-forest)] shadow-[0_20px_45px_rgba(22,53,31,0.28)] transition hover:scale-[1.03]"
     >
-      <Plus className="h-6 w-6" />
+      <Plus className="h-7 w-7" strokeWidth={2.75} />
     </Link>
   );
 }
